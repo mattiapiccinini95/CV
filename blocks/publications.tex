@@ -1,0 +1,37 @@
+%% Sometimes when a section can't be nicely modelled with the \entry[]... mechanism; hack our own
+\makerubrichead{Publications and Patents}
+
+%% Assuming you've already given \addbibresource{own-bib.bib} in the main doc. Right? Right???
+\nocite{*}
+
+%% If you just want everything in one list
+% \printbibliography[heading={none}]
+
+\vspace{0.1cm}
+{\large\bfseries\sffamily Peer-Reviewed Journal Papers}
+
+%\vspace{0.05cm}
+%\textbf{Note}: the most important 3 papers are prioritized at the beginning of the list.
+
+\printbibliography[heading=none,title={},type=article]
+
+%\newpage
+%\printbibliography[heading={subbibliography},title={Journal Papers In Preparation},type=misc]
+
+\printbibliography[heading={subbibliography},title={Peer-Reviewed Conference Papers},type=inproceedings]
+
+\printbibliography[heading={subbibliography},title={Peer-Reviewed Workshop Papers},type=incollection]
+
+\printbibliography[heading={subbibliography},title={Other Publications},type=unpublished]
+
+\printbibliography[heading={subbibliography},title={Invited Talks, Presentations and Poster Sessions},type=booklet]
+
+\printbibliography[heading={subbibliography},title={Patents},type=manual]
+
+%\printbibliography[heading={subbibliography},title={Books and Chapters},filter={booksandchapters}]
+
+
+
+
+
+
