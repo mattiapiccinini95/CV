@@ -6,3 +6,6 @@
 out.nosync
 
 ./mainENG/**/*.pdf
+
+# MacOS
+.DS_Store
