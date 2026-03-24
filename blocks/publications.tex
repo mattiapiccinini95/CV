@@ -16,72 +16,29 @@ h-index (Google Scholar) & $11$ \\
 \end{tabular}
 \end{center}
 
-
-
-%% Assuming you've already given \addbibresource{own-bib.bib} in the main doc. Right? Right???
-\nocite{*}
-
-%% If you just want everything in one list
-% \printbibliography[heading={none}]
-
-% \vspace{0.2cm}
-% The following publications are connected with the results of my Ph.D. thesis.
-% \vspace{0.2cm}
+\newcommand{\printbibliographyfromfile}[2]{%
+	\begin{refsection}[#1]
+		\nocite{*}
+		\printbibliography[heading={subbibliography},title={#2}]
+	\end{refsection}%
+}
 
 \vspace{0.1cm}
-% {\large\bfseries\sffamily Peer-Reviewed Journal Papers}
 
-%\vspace{0.05cm}
-%\textbf{Note}: the most important 3 papers are prioritized at the beginning of the list.
+\printbibliographyfromfile{journal_papers.bib}{Peer-Reviewed Journal Papers}
+\printbibliographyfromfile{journal_papers_under_review.bib}{Peer-Reviewed Journal Papers \textit{Under Review}}
 
-% Split journal papers by review status using the BibTeX field note={under review}
-\defbibcheck{journalpublished}{%
-	\ifentrytype{article}{%
-		\iffieldundef{note}{}{%
-			\iffieldequalstr{note}{under review}{\skipentry}{}%
-		}%
-	}{\skipentry}%
-}
+\printbibliographyfromfile{conference_papers.bib}{Peer-Reviewed Conference Papers}
+\printbibliographyfromfile{conference_papers_under_review.bib}{Peer-Reviewed Conference Papers \textit{Under Review}}
 
-\defbibcheck{journalunderreview}{%
-	\ifentrytype{article}{%
-		\iffieldequalstr{note}{under review}{}{\skipentry}%
-	}{\skipentry}%
-}
+\printbibliographyfromfile{workshop_papers.bib}{Peer-Reviewed Workshop Papers}
 
-\defbibcheck{conferencepublished}{%
-	\ifentrytype{inproceedings}{%
-		\iffieldundef{note}{}{%
-			\iffieldequalstr{note}{under review}{\skipentry}{}%
-		}%
-	}{\skipentry}%
-}
+\printbibliographyfromfile{other_publications.bib}{Other Publications}
 
-\defbibcheck{conferenceunderreview}{%
-	\ifentrytype{inproceedings}{%
-		\iffieldequalstr{note}{under review}{}{\skipentry}%
-	}{\skipentry}%
-}
+\printbibliographyfromfile{invited_talks.bib}{Invited Talks}
+\printbibliographyfromfile{poster_sessions.bib}{Poster Sessions}
 
-\printbibliography[heading={subbibliography},title={Peer-Reviewed Journal Papers},check=journalpublished]
-\printbibliography[heading={subbibliography},title={Peer-Reviewed Journal Papers \textit{Under Review}},check=journalunderreview]
-
-%\newpage
-%\printbibliography[heading={subbibliography},title={Journal Papers In Preparation},type=misc]
-
-\printbibliography[heading={subbibliography},title={Peer-Reviewed Conference Papers},check=conferencepublished]
-\printbibliography[heading={subbibliography},title={Peer-Reviewed Conference Papers \textit{Under Review}},check=conferenceunderreview]
-
-\printbibliography[heading={subbibliography},title={Peer-Reviewed Workshop Papers},type=incollection]
-
-\printbibliography[heading={subbibliography},title={Other Publications},type=unpublished]
-
-\printbibliography[heading={subbibliography},title={Invited Talks},category=invitedtalks]
-\printbibliography[heading={subbibliography},title={Poster Sessions},category=postersessions]
-
-\printbibliography[heading={subbibliography},title={Patents},type=manual]
-
-%\printbibliography[heading={subbibliography},title={Books and Chapters},filter={booksandchapters}]
+\printbibliographyfromfile{patents.bib}{Patents}
 
 
 
