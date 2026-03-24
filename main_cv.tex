@@ -13,7 +13,7 @@
 
 
 % Default biblatex style used for the publication list is APA6. If you wish to use a different style or pass other options to biblatex you can change them here. 
-\PassOptionsToPackage{style=ieee,sorting=none,uniquename=init,defernumbers=true}{biblatex}
+\PassOptionsToPackage{style=ieee,sorting=none,uniquename=init,defernumbers=true,maxbibnames=30}{biblatex}
 
 % Most commands and style definitions are in settings.sty.
 \usepackage{settings}
@@ -23,6 +23,10 @@
 
 %% Only needed if you want a Publication List
 \addbibresource{biblio.bib}
+\DeclareBibliographyCategory{invitedtalks}
+\DeclareBibliographyCategory{postersessions}
+\addtocategory{invitedtalks}{TalkTUE_2025,TalkVerona_2026,UniBwTalk2022,EKUMENTalk2025,TUMTalk2024,ModelySeminar2024}
+\addtocategory{postersessions}{Poster2022,Poster2022b,Poster2023,ICRA_poster_2025}
 
 %% Specify your last name(s) and first name(s) (as given in the .bib) to automatically bold your own name in the publications list. 
 %% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
@@ -85,7 +89,6 @@
 \vspace{0.05cm}
 \makerubric{blocks/skills}
 \input{blocks/personal_interests}
-\newpage
 \input{blocks/referee}
 \input{blocks/place_and_date}
 

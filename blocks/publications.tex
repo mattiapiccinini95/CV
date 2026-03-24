@@ -1,6 +1,23 @@
 %% Sometimes when a section can't be nicely modelled with the \entry[]... mechanism; hack our own
 \makerubrichead{Publications and Patents}
 
+\vspace{0.1cm}
+\begin{center}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Metric} & \textbf{Value} \\
+\hline
+N. journal papers & $17$ ($7$ of which are under review) \\
+N. conference papers & $20$ ($8$ of which are under review) \\
+N. patents & $2$ ($1$ pending) \\
+N. citations (Google Scholar) & $289$ \\
+h-index (Google Scholar) & $11$ \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
 %% Assuming you've already given \addbibresource{own-bib.bib} in the main doc. Right? Right???
 \nocite{*}
 
@@ -12,23 +29,55 @@
 % \vspace{0.2cm}
 
 \vspace{0.1cm}
-{\large\bfseries\sffamily Peer-Reviewed Journal Papers}
+% {\large\bfseries\sffamily Peer-Reviewed Journal Papers}
 
 %\vspace{0.05cm}
 %\textbf{Note}: the most important 3 papers are prioritized at the beginning of the list.
 
-\printbibliography[heading=none,title={},type=article]
+% Split journal papers by review status using the BibTeX field note={under review}
+\defbibcheck{journalpublished}{%
+	\ifentrytype{article}{%
+		\iffieldundef{note}{}{%
+			\iffieldequalstr{note}{under review}{\skipentry}{}%
+		}%
+	}{\skipentry}%
+}
+
+\defbibcheck{journalunderreview}{%
+	\ifentrytype{article}{%
+		\iffieldequalstr{note}{under review}{}{\skipentry}%
+	}{\skipentry}%
+}
+
+\defbibcheck{conferencepublished}{%
+	\ifentrytype{inproceedings}{%
+		\iffieldundef{note}{}{%
+			\iffieldequalstr{note}{under review}{\skipentry}{}%
+		}%
+	}{\skipentry}%
+}
+
+\defbibcheck{conferenceunderreview}{%
+	\ifentrytype{inproceedings}{%
+		\iffieldequalstr{note}{under review}{}{\skipentry}%
+	}{\skipentry}%
+}
+
+\printbibliography[heading={subbibliography},title={Peer-Reviewed Journal Papers},check=journalpublished]
+\printbibliography[heading={subbibliography},title={Peer-Reviewed Journal Papers \textit{Under Review}},check=journalunderreview]
 
 %\newpage
 %\printbibliography[heading={subbibliography},title={Journal Papers In Preparation},type=misc]
 
-\printbibliography[heading={subbibliography},title={Peer-Reviewed Conference Papers},type=inproceedings]
+\printbibliography[heading={subbibliography},title={Peer-Reviewed Conference Papers},check=conferencepublished]
+\printbibliography[heading={subbibliography},title={Peer-Reviewed Conference Papers \textit{Under Review}},check=conferenceunderreview]
 
 \printbibliography[heading={subbibliography},title={Peer-Reviewed Workshop Papers},type=incollection]
 
 \printbibliography[heading={subbibliography},title={Other Publications},type=unpublished]
 
-\printbibliography[heading={subbibliography},title={Invited Talks, Presentations and Poster Sessions},type=booklet]
+\printbibliography[heading={subbibliography},title={Invited Talks},category=invitedtalks]
+\printbibliography[heading={subbibliography},title={Poster Sessions},category=postersessions]
 
 \printbibliography[heading={subbibliography},title={Patents},type=manual]
 
