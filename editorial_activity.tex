@@ -1,0 +1,148 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Journal Article
+% LaTeX Template
+% Version 1.4 (15/5/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com) with extensive modifications by
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{blindtext} % Package to generate dummy text throughout this template 
+\usepackage[none]{hyphenat}
+%\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{pdfpages}
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+\usepackage{url} % URLs
+
+\usepackage[english]{babel} % Language hyphenation and typographical rules
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+
+%\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
+\titleformat{\section}[block]{\Large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{Editorial and Review Activity $\bullet$ Mattia Piccinini} % Custom header text
+\fancyfoot[RO,LE]{\thepage} % Custom footer text
+
+\usepackage{titling} % Customizing the title section
+
+\usepackage{hyperref} % For hyperlinks in the PDF
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\setlength{\droptitle}{-4\baselineskip} % Move the title up
+
+\pretitle{\begin{center}\Huge\bfseries} % Article title formatting
+\posttitle{\end{center}} % Article title closing formatting
+\title{Editorial and Review Activity} % Article title
+\author{%
+\textsc{\Large Mattia Piccinini} \\[1ex] % Your name
+%\large University of Trento \\ % Your institution
+%\normalsize \href{mailto:john@smith.com}{john@smith.com} % Your email address
+%\and % Uncomment if 2 authors are required, duplicate these 4 lines if more
+%\textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
+%\normalsize University of Utah \\ % Second author's institution
+%\normalsize \href{mailto:jane@smith.com}{jane@smith.com} % Second author's email address
+}
+%\date{\today} % Leave empty to omit a date
+\date{September 10$^{th}$, 2026}
+
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the title
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+\thispagestyle{empty}
+
+\begin{center}
+\Large\textbf{Editorial Activities}
+\end{center}
+
+\begin{itemize}
+    \item \textbf{Associate Editor}, IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), since 2026
+    \item \textbf{Associate Editor}, IEEE International Conference on Intelligent Transportation Systems (ITSC), since 2026
+    \item \textbf{Invited Session Organizer}, Invited Session on ``Automated Vehicles at the Limits: Lessons and Opportunities from the Racetrack'', IEEE International Conference on Intelligent Transportation Systems (ITSC), 2026
+    \item \textbf{Guest Editor} of the Special Issue on ``Methods and Algorithms for Autonomous Systems in Intelligent Transportation'', IEEE Open Journal of Intelligent Transportation Systems, from October 2026
+\end{itemize}
+
+\vspace{0.2cm}
+\begin{center}
+\Large\textbf{Conference Committees}
+\end{center}
+
+\begin{itemize}
+    \item \textbf{Chair} of the Session ``Tracking and Coordinating Autonomous Vehicle Fleets'', at the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Pittsburgh (USA), 2026
+    \item \textbf{Co-Chair} of the Session ``Synthesizing and Reasoning About Driving Behavior'', at the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Pittsburgh (USA), 2026
+    \item \textbf{Chair} of the session ``Automated Vehicles at the Limits: Lessons and Opportunities from the Racetrack'', at the IEEE International Conference on Intelligent Transportation Systems (ITSC), Naples (Italy), 2026
+    \item \textbf{Chair} of the session ``Model Predictive Control'', at the Automatica.it conference, Parma (Italy), 2026
+    \item \textbf{Chair} of the session ``Path Planning'', at the Automatica.it conference, Bolzano (Italy), 2024
+    \item \textbf{Co-chair} of the session ``Modeling, Control, and Optimization of Transportation Systems'', at the 17th IFAC Symposium on Control in Transportation Systems (CTS), Ayia Napa (Cyprus), 2024
+\end{itemize}
+
+\vspace{0.2cm}
+\begin{center}
+\Large\textbf{Workshop Organization}
+\end{center}
+
+\begin{itemize}
+    \item \textbf{Workshop Organizer}: M. Piccinini, M. Salazar, J. Betz, ``Automated and Electrified Racing: Opportunities for Future Intelligent Vehicles'', IEEE International Conference on Intelligent Transportation Systems (ITSC), 2026
+    \item \textbf{Workshop Organizer}: D. Meli, M. Piccinini, F. Trotti, A. Farinelli, J. Betz, ``AI Meets Control for Resilient and Reliable Robot Planning (AIM-Ctrl)'', IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2026
+\end{itemize}
+
+\newpage
+\begin{center}
+\Large\textbf{Peer-Review Activities}
+\end{center}
+
+\vspace{0.3cm}
+{\textbf{Journals}}: 
+IEEE Transactions on Intelligent Transportation Systems; IEEE Transactions on Intelligent Vehicles; IEEE Transactions on Vehicular Technology; IEEE Transactions on Mechatronics; IEEE Transactions on Industrial Electronics; IEEE Open Journal of Control Systems; IEEE Transactions on Control Systems Technology; IEEE Transactions on Robotics; IEEE Robotics and Automation Letters (RA-L); IEEE Access; Robotics and Autonomous Systems; Springer Nature - International Journal of Machine Learning and Cybernetics; Springer Optimization and Engineering; Springer Nature Communications; Control Engineering Practice (IFAC); Vehicle System Dynamics; Mechanical Systems and Signal Processing; Results in Materials (Elsevier); MDPI Vehicles; MDPI Machines; MDPI Electronics; MDPI Actuators; MDPI Algorithms; MDPI Drones; MDPI Symmetry; MDPI Applied Sciences; MDPI World Electric Vehicle Journal 
+
+\vspace{0.3cm}
+{\textbf{Conferences}}: IEEE International Conference on Robotics and Automation (ICRA); IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS); IEEE Intelligent Vehicles Symposium (IV); IEEE International Conference on Intelligent Transportation Systems (ITSC); IEEE Conference on Decision and Control (CDC); European Control Conference (ECC); IEEE Conference on Control Technology and Applications; IEEE International Conference on Real-time Computing and Robotics; IEEE International Conference on Advanced Motion Control; International Conference on System Theory, Control and Computing (ICSTCC); IFAC Symposium on Control in Transportation Systems; Winter Conference on Applications of Computer Vision (WACV).
+
+\end{document}
