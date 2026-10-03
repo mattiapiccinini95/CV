@@ -61,7 +61,7 @@
   \AtEveryBibitem{\makebox[2.5em][l]{\circled{\thebibitem}\stepcounter{bibitem}}}%
 }{%
   % if numeric style
-  \DeclareFieldFormat{labelnumberwidth}{\makebox[2.5em][l]{\circled{\thebibitem}}}%
+  \DeclareFieldFormat{labelnumberwidth}{\makebox[2.5em][l]{\circled{#1}}}% #1 = prefixed label, e.g. J3
   \setlength{\biblabelsep}{0pt}%
   \AtEveryBibitem{\stepcounter{bibitem}}%
 }

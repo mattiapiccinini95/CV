@@ -21,15 +21,60 @@
 % If you need to further customise your biblatex setup e.g. with \DeclareFieldFormat etc please add them here AFTER loading settings.sty. For example, to remove the default "[Online] Available:" prefix before URLs when using the IEEE style:
 \DefineBibliographyStrings{english}{url={\textsc{url}}}
 
+%% Publications: all .bib files go into one bibliography, so that entries can be
+%% cited anywhere in the CV (e.g. \cite{Mungiello2026} -> [J3], clickable).
+%% Each file gets a keyword (used to split the lists) and a label prefix.
+\addbibresource{journal_papers.bib}
+\addbibresource{journal_papers_under_review.bib}
+\addbibresource{conference_papers.bib}
+\addbibresource{conference_papers_under_review.bib}
+\addbibresource{workshop_papers.bib}
+\addbibresource{other_publications.bib}
+\addbibresource{poster_sessions.bib}
+\addbibresource{patents.bib}
+\DeclareSourcemap{\maps[datatype=bibtex, overwrite=true]{
+  \map{\perdatasource{journal_papers.bib}\step[fieldset=keywords, fieldvalue={,}, appendstrict]\step[fieldset=keywords, fieldvalue={cvjournal}, append]}
+  \map{\perdatasource{journal_papers_under_review.bib}\step[fieldset=keywords, fieldvalue={,}, appendstrict]\step[fieldset=keywords, fieldvalue={cvjournalrev}, append]}
+  \map{\perdatasource{conference_papers.bib}\step[fieldset=keywords, fieldvalue={,}, appendstrict]\step[fieldset=keywords, fieldvalue={cvconf}, append]}
+  \map{\perdatasource{conference_papers_under_review.bib}\step[fieldset=keywords, fieldvalue={,}, appendstrict]\step[fieldset=keywords, fieldvalue={cvconfrev}, append]}
+  \map{\perdatasource{workshop_papers.bib}\step[fieldset=keywords, fieldvalue={,}, appendstrict]\step[fieldset=keywords, fieldvalue={cvworkshop}, append]}
+  \map{\perdatasource{other_publications.bib}\step[fieldset=keywords, fieldvalue={,}, appendstrict]\step[fieldset=keywords, fieldvalue={cvother}, append]}
+  \map{\perdatasource{poster_sessions.bib}\step[fieldset=keywords, fieldvalue={,}, appendstrict]\step[fieldset=keywords, fieldvalue={cvposter}, append]}
+  \map{\perdatasource{patents.bib}\step[fieldset=keywords, fieldvalue={,}, appendstrict]\step[fieldset=keywords, fieldvalue={cvpatent}, append]}
+}}
+\assignrefcontextkeyws[labelprefix=J]{cvjournal}
+\assignrefcontextkeyws[labelprefix=JR]{cvjournalrev}
+\assignrefcontextkeyws[labelprefix=C]{cvconf}
+\assignrefcontextkeyws[labelprefix=CR]{cvconfrev}
+\assignrefcontextkeyws[labelprefix=W]{cvworkshop}
+\assignrefcontextkeyws[labelprefix=O]{cvother}
+\assignrefcontextkeyws[labelprefix=PS]{cvposter}
+\assignrefcontextkeyws[labelprefix=PT]{cvpatent}
+
+%% Reverse numbering within each list (first journal paper = J<total>), for both
+%% list labels and citations. Totals are counted while printing and stored in
+%% the .aux file, so they are applied from the second LaTeX run on.
+\makeatletter
+\AtEveryBibitem{%
+  \edef\cv@prefix{\thefield{labelprefix}}%
+  \ifcsdef{cv@n@\cv@prefix}{}{\csgdef{cv@n@\cv@prefix}{0}}%
+  \csxdef{cv@n@\cv@prefix}{\the\numexpr\csuse{cv@n@\cv@prefix}+1\relax}}
+\newcommand*{\cv@writetotal}[1]{%
+  \ifcsdef{cv@n@#1}
+    {\immediate\write\@auxout{\gdef\string\cv@total@#1{\csuse{cv@n@#1}}}}{}}
+\AtEndDocument{\forcsvlist{\cv@writetotal}{J,JR,C,CR,W,O,PS,PT}}
+\DeclareFieldFormat{labelnumber}{%
+  \ifcsdef{cv@total@\thefield{labelprefix}}
+    {\the\numexpr\csuse{cv@total@\thefield{labelprefix}}+1-#1\relax}
+    {#1}}
+\makeatother
+
 %% Specify your last name(s) and first name(s) (as given in the .bib) to automatically bold your own name in the publications list. 
 %% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
 % \mynames{Lim/Lian\bibnamedelima Tze}
 
 %% You can specify multiple names like this, especially if you have changed your name or if you need to highlight multiple authors. See items 6–9 in the example "Journal Articles" output.
-\mynames{Lim/Lian\bibnamedelima Tze,
-  Wong/Lian\bibnamedelima Tze,
-  Lim/Tracy,
-  Lim/L.\bibnamedelimi T.}
+\mynames{Piccinini/Mattia}
 %% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
 
 % Change the fonts if you want
@@ -68,6 +113,7 @@
 \title{Curriculum Vitae}
 
 \begin{document}
+\nocite{*}
 \makeheaders[c]
 
 \input{blocks/research}

@@ -7,39 +7,33 @@
 \hline
 \textbf{Metric} & \textbf{Value} \\
 \hline
-N. journal papers & $17$ ($2$ of which are under review) \\
-N. conference papers & $24$ ($1$ of which is under review) \\
+N. journal papers & $15$ \\
+N. conference papers & $23$ \\
 N. patents & $2$ ($1$ pending) \\
-N. citations (Google Scholar) & $520+$ \\
+N. citations (Google Scholar) & $530+$ \\
 h-index (Google Scholar) & $13$ \\
 \hline
 \end{tabular}
 \end{center}
 
-\newcommand{\printbibliographyfromfile}[2]{%
-	\begin{refsection}[#1]
-		\nocite{*}
-		\printbibliography[heading={subbibliography},title={#2}]
-	\end{refsection}%
+% #1: label prefix, #2: keyword assigned to the source .bib file (see main_cv.tex), #3: title
+\newcommand{\printpublist}[3]{%
+	\newrefcontext[labelprefix=#1]%
+	\printbibliography[keyword=#2,heading={subbibliography},title={#3},resetnumbers=true]%
 }
 
 \vspace{0.1cm}
 
-\printbibliographyfromfile{journal_papers.bib}{Peer-Reviewed Journal Papers}
-\printbibliographyfromfile{journal_papers_under_review.bib}{Peer-Reviewed Journal Papers \textit{Under Review}}
+\printpublist{J}{cvjournal}{Peer-Reviewed Journal Papers}
+\printpublist{JR}{cvjournalrev}{Peer-Reviewed Journal Papers \textit{Under Review}}
 
-\printbibliographyfromfile{conference_papers.bib}{Peer-Reviewed Conference Papers}
-\printbibliographyfromfile{conference_papers_under_review.bib}{Peer-Reviewed Conference Papers \textit{Under Review}}
+\printpublist{C}{cvconf}{Peer-Reviewed Conference Papers}
+% \printpublist{CR}{cvconfrev}{Peer-Reviewed Conference Papers \textit{Under Review}}
 
-\printbibliographyfromfile{workshop_papers.bib}{Peer-Reviewed Workshop Papers}
-\printbibliographyfromfile{other_publications.bib}{Other Publications}
+\printpublist{W}{cvworkshop}{Peer-Reviewed Workshop Papers}
+\printpublist{O}{cvother}{Other Publications}
 % \printbibliographyfromfile{invited_talks.bib}{Invited Talks}
-\printbibliographyfromfile{poster_sessions.bib}{Poster Sessions}
+\printpublist{PS}{cvposter}{Poster Sessions}
 
-\printbibliographyfromfile{patents.bib}{Patents}
-
-
-
-
-
-
+\printpublist{PT}{cvpatent}{Patents}
+\endrefcontext
